@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.qiubangbang.singalchart.MainActivity">
+
+    <com.qiubangbang.singalchart.tablayout.SlidingTabLayout
+        android:id="@+id/slidingTab"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:tl_indicator_color="#4598a9"
+        app:tl_indicator_height="2dp"
+        app:tl_indicator_width="30dp"
+        app:tl_tab_space_equal="true"
+        app:tl_textSelectColor="#4598a9"
+        app:tl_textUnselectColor="#8b8c8c"
+        app:tl_textsize="13sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/slidingTab"
+        android:background="#668b8c8c" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/slidingTab" />
+
+</RelativeLayout>
