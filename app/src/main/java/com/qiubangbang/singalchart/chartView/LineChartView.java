@@ -24,6 +24,8 @@ import com.qiubangbang.singalchart.R;
 
 import java.util.ArrayList;
 
+import static android.content.ContentValues.TAG;
+
 /**
  * 线形图
  * Created by qiubangbang on 2016/1/6.
@@ -83,6 +85,8 @@ public class LineChartView extends View {
     private float down_x = 0;
     private float down_y = 0;
     private float increasement = 1f;
+
+    private static final String TAG = "lineChartView";
 
     public LineChartView(Context context) {
         super(context);
@@ -335,8 +339,8 @@ public class LineChartView extends View {
         //internal+1 是因为分为4份，其实占了5个点
         for (int i = 6 + internal + 1; i < points.size(); i++) {
             //绘制区域
-            int y1 = (int) (points.get(i - 1).y * increasement);
-            int y2 = (int) (points.get(i).y * increasement);
+            int y1 = (int) (points.get(0).y - (points.get(0).y - points.get(i - 1).y) * increasement);
+            int y2 = (int) (points.get(0).y - (points.get(0).y - points.get(i).y) * increasement);
 
             fillPaint.setColor(defaultColor);
             fillPaint.setAlpha(190);
@@ -417,8 +421,10 @@ public class LineChartView extends View {
                 float f = (float) animation.getAnimatedValue();
                 increasement = f;
                 invalidate();
+                Log.d(TAG, "onAnimationUpdate: " + f);
                 if (f == 1) {
                     animator.removeUpdateListener(this);
+                    Log.d(TAG, "onAnimationUpdate: over");
                 }
             }
         });
