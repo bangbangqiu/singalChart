@@ -1,6 +1,7 @@
 package com.qiubangbang.singalchart.tablayout;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,10 @@ import android.view.ViewGroup;
 
 import com.qiubangbang.singalchart.R;
 import com.qiubangbang.singalchart.chartView.LineChartView;
+import com.qiubangbang.singalchart.chartView.PieChatView;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 /**
  * Created by qiubangbang on 2017/1/20.
@@ -52,6 +57,22 @@ public class ChartPagerAdapter extends PagerAdapter {
                 lcv.startAnim();
                 break;
             case 1:
+                PieChatView pcv = (PieChatView) view.findViewById(R.id.pcv);
+                ArrayList<Integer> colors = new ArrayList<>();
+                colors.add(Color.rgb(0xff, 0x64, 0x68));
+                colors.add(Color.rgb(0xff, 0x8e, 0x20));
+                colors.add(Color.rgb(0x5c, 0x9a, 0xe2));
+                LinkedHashMap kindsMap = new LinkedHashMap<>();
+                kindsMap.put("a", 23);
+                kindsMap.put("b", 99);
+                kindsMap.put("c", 12);
+                pcv.setDataMap(kindsMap);
+                pcv.setColors(colors);
+                pcv.setCenterTitle("");
+                pcv.setMinAngle(50);
+                pcv.setmRadius(70 * 3);//// TODO: 2017/2/6  
+                pcv.startDraw();
+
                 break;
             case 2:
                 break;
