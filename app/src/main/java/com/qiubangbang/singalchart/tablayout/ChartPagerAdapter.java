@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.qiubangbang.singalchart.R;
+import com.qiubangbang.singalchart.chartView.BarChartView;
 import com.qiubangbang.singalchart.chartView.LineChartView;
 import com.qiubangbang.singalchart.chartView.PieChatView;
 
@@ -75,6 +76,10 @@ public class ChartPagerAdapter extends PagerAdapter {
 
                 break;
             case 2:
+                BarChartView bcv = (BarChartView) view.findViewById(R.id.barChartView);
+                bcv.SetInfo(new String[]{"(3)[3月]", "(4)[4月]", "(5)[5月]", "(6)[6月]", "(7)[7月]", "(8)[8月]"},
+                        new String[]{"(22)[]", "(11)[]", "(76)[]", "(40)[]", "(110)[]", "(90)[]"});
+                bcv.startAnim();
                 break;
         }
 
